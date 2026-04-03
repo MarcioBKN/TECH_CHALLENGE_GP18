@@ -8,13 +8,13 @@ Este documento descreve, passo a passo, como reproduzir o ambiente, executar o p
 
 | Etapa | Ferramenta | Descrição |
 |-------|------------|-----------|
-| Fonte | CSVs (dataset Olist) | Arquivos na pasta `archive` |
+| Fonte | CSVs (dataset Olist) | Pasta `arquivos/` no repositório |
 | Tipagem e regras | `dicionario.xlsx` | Dicionário de dados por entidade |
 | Transformação e carga | Python (`fiap18.ipynb` + `utils/etl_olist.py`) | ETL padronizado para SQLite |
 | Destino | `database.db` | Banco SQLite na raiz do repositório |
 | Indicadores e modelo | Power BI Desktop | Conexão ao `.db`, medidas e visualizações |
 
-**Princípio de governança:** a conexão co' o banco fica centralizada em `utils/db.py` (`with_connection`, `DB_PATH`). O notebook não repete strings de conexão; o código reutiliza esses utilitários.
+**Princípio de governança:** a conexão com o banco fica centralizada em `utils/db.py` (`with_connection`, `DB_PATH`). O notebook não repete strings de conexão; o código reutiliza esses utilitários.
 
 ---
 
@@ -44,22 +44,19 @@ Conteúdo esperado do arquivo:
 
 ```
 fiap/
-├── database.db              # Gerado após o ETL (não versionar se for muito grande)
+├── arquivos/                # CSVs Olist versionados (olist_*.csv, tradução de categorias)
+├── dicionario.xlsx          # Dicionário de tipos (abas por entidade)
+├── database.db              # Gerado após o ETL (ignorado pelo Git — recriar com o notebook)
 ├── fiap18.ipynb             # Notebook principal do ETL
 ├── requirements-analise.txt
 ├── DOCUMENTACAO.md          # Este arquivo
 └── utils/
     ├── __init__.py
     ├── db.py                # Conexão SQLite (DB_PATH, with_connection)
-    └── etl_olist.py           # Pipeline ETL Olist
+    └── etl_olist.py         # Pipeline ETL Olist
 ```
 
-**Dados externos (fora do repositório, por padrão):**
-
-- `C:\Users\lopes\Downloads\archive\` — CSVs do Olist (`olist_*.csv`, `product_category_name_translation.csv`).
-- `C:\Users\lopes\Downloads\dicionario.xlsx` — dicionário de tipos.
-
-Se você mover esses arquivos, atualize os caminhos na célula de configuração do `fiap18.ipynb` (variáveis `ARCHIVE` e `DICIONARIO_XLSX`).
+Por padrão, `fiap18.ipynb` e `utils/etl_olist.py` usam **`ROOT / "arquivos"`** e **`ROOT / "dicionario.xlsx"`**. Se os dados estiverem em outro disco, altere `ARCHIVE` e `DICIONARIO_XLSX` na primeira célula do notebook.
 
 ---
 
@@ -122,8 +119,8 @@ from pathlib import Path
 from utils.etl_olist import run_olist_etl
 
 run_olist_etl(
-    archive=Path(r"C:\Users\lopes\Downloads\archive"),
-    dicionario=Path(r"C:\Users\lopes\Downloads\dicionario.xlsx"),
+    archive=Path("arquivos"),  # ou caminho absoluto
+    dicionario=Path("dicionario.xlsx"),
     dry_run=True,
 )
 ```
@@ -234,7 +231,7 @@ O arquivo **`database.db`** não sobe por padrão (é grande). Quem clonar o rep
 ## 11. Checklist de entrega (faculdade)
 
 - [ ] Repositório público no GitHub com `fiap18.ipynb`, `utils/`, `requirements-analise.txt` e esta documentação.
-- [ ] Instrução clara de onde colocar `archive` e `dicionario.xlsx` (ou incluir amostra menor, se a política permitir).
+- [ ] Dados em `arquivos/` + `dicionario.xlsx` na raiz (ou documentar caminho alternativo).
 - [ ] `database.db` opcional no repositório (pode ser grande; às vezes o professor prefere só o código + instrução para gerar o banco).
 - [ ] Link da apresentação (storytelling).
 - [ ] Link do vídeo executivo (até 5 minutos), em linguagem de negócio.

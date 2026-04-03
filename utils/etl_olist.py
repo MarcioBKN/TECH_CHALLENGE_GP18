@@ -14,9 +14,10 @@ import pandas as pd
 
 from .db import with_connection
 
-# --- Caminhos padrão (ajuste via argumentos em ``run_olist_etl`` se necessário) ---
-DEFAULT_ARCHIVE = Path(r"C:\Users\lopes\Downloads\archive")
-DEFAULT_DICIONARIO = Path(r"C:\Users\lopes\Downloads\dicionario.xlsx")
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+# CSVs e dicionário versionados em ``arquivos/`` e ``dicionario.xlsx`` na raiz do projeto
+DEFAULT_ARCHIVE = _PROJECT_ROOT / "arquivos"
+DEFAULT_DICIONARIO = _PROJECT_ROOT / "dicionario.xlsx"
 
 # Nome do CSV → função que identifica a aba correta no Excel (evita depender de encoding)
 def _resolve_sheet_for_csv(csv_name: str, sheet_names: list[str]) -> str:
