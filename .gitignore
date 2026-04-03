@@ -1,0 +1,35 @@
+# Banco gerado pelo ETL (grande; recriar com o notebook)
+database.db
+*.db-journal
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ambiente / segredos
+.env
+.env.*
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Dados locais grandes (opcional: remova a linha se quiser versionar CSVs de amostra)
+# *.csv

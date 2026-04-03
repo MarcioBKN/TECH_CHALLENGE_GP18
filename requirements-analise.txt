@@ -1,0 +1,4 @@
+# Notebook fiap18 (ETL Olist) + utils.etl_olist
+# pip install -r requirements-analise.txt
+pandas>=2.0.0
+openpyxl>=3.1.0
