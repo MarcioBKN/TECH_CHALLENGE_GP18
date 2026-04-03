@@ -202,13 +202,15 @@ git commit -m "Sua mensagem"
 
 ### Publicar no GitHub
 
-1. Crie um repositório **vazio** em [github.com/new](https://github.com/new) (sem README, se já tiver um local).
-2. Na pasta do projeto:
+1. Repositório do grupo: **[MarcioBKN/TECH_CHALLENGE_GP18](https://github.com/MarcioBKN/TECH_CHALLENGE_GP18)**.
+2. Na primeira vez, na pasta do projeto:
 
 ```bash
-git remote add origin https://github.com/SEU_USUARIO/SEU_REPO.git
+git remote add origin https://github.com/MarcioBKN/TECH_CHALLENGE_GP18.git
 git push -u origin main
 ```
+
+Se o `remote` já existir com outra URL: `git remote set-url origin https://github.com/MarcioBKN/TECH_CHALLENGE_GP18.git`
 
 3. Se a branch local ainda for `master`, use `git branch -M main` antes do `push`.
 
