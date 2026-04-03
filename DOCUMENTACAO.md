@@ -186,6 +186,19 @@ Se você copiar apenas o `.db` para outra máquina, use o **mesmo esquema** gera
 
 **Observação:** se você mover a pasta do projeto, atualize o caminho da fonte em **Transformar dados** → **Configurações da fonte de dados**.
 
+### 9.1 Alternativa: conexão via ODBC (quando o conector SQLite nativo não estiver disponível)
+
+1. **Instale um driver ODBC para SQLite** no Windows (ex.: [SQLite ODBC Driver](http://www.ch-werner.de/sqliteodbc/) — pacote amplamente usado; escolha a variante **64 bits** se o seu Power BI Desktop for 64 bits).
+2. Abra o **Administrador de fonte de dados ODBC** do Windows (*odbcad32.exe*) e configure um **DSN de usuário** ou **DSN de sistema** apontando para o caminho completo do arquivo `database.db`.
+3. No Power BI Desktop: **Obter dados** → **Outros** → **ODBC** → selecione o DSN criado (ou use **DSN avançado** / string de conexão conforme a documentação do driver).
+4. Documentação oficial Microsoft sobre ODBC no Power BI: [Conectar-se a uma fonte de dados ODBC (Power BI Desktop)](https://learn.microsoft.com/pt-br/power-bi/connect-data/desktop-connect-odbc).
+
+### 9.2 Material complementar (pesquisa e vídeos)
+
+Sugestão de busca com resultados que costumam incluir tutoriais sobre Power BI e SQLite (incluindo ODBC), útil como ponto de partida — o conteúdo exato dos resultados pode mudar com o tempo:
+
+- [Busca sugerida: Power BI + SQLite no Google](https://www.google.com/search?q=da+para+conectar+o+power+bi+ao+sql+liter+no+power+bi&oq=da+para+conectar+o+power+bi+ao+sql+liter+&gs_lcrp=EgZjaHJvbWUqBwgBECEYoAEyBggAEEUYOTIHCAEQIRigAdIBCTEwMjI3ajBqN6gCCLACAfEF20ecPEbxlQnxBdtHnDxG8ZUJ&sourceid=chrome&ie=UTF-8)
+
 ---
 
 ## 10. Git e GitHub
