@@ -188,7 +188,35 @@ Se você copiar apenas o `.db` para outra máquina, use o **mesmo esquema** gera
 
 ---
 
-## 10. Checklist de entrega (faculdade)
+## 10. Git e GitHub
+
+O projeto já inclui **`.gitignore`** (ignora `database.db`, caches Python, `.venv`, checkpoints do Jupyter).
+
+### Comandos básicos (na pasta `fiap`)
+
+```bash
+git status
+git add .
+git commit -m "Sua mensagem"
+```
+
+### Publicar no GitHub
+
+1. Crie um repositório **vazio** em [github.com/new](https://github.com/new) (sem README, se já tiver um local).
+2. Na pasta do projeto:
+
+```bash
+git remote add origin https://github.com/SEU_USUARIO/SEU_REPO.git
+git push -u origin main
+```
+
+3. Se a branch local ainda for `master`, use `git branch -M main` antes do `push`.
+
+O arquivo **`database.db`** não sobe por padrão (é grande). Quem clonar o repositório gera o banco rodando o ETL no `fiap18.ipynb`.
+
+---
+
+## 11. Checklist de entrega (faculdade)
 
 - [ ] Repositório público no GitHub com `fiap18.ipynb`, `utils/`, `requirements-analise.txt` e esta documentação.
 - [ ] Instrução clara de onde colocar `archive` e `dicionario.xlsx` (ou incluir amostra menor, se a política permitir).
@@ -198,7 +226,7 @@ Se você copiar apenas o `.db` para outra máquina, use o **mesmo esquema** gera
 
 ---
 
-## 11. Problemas comuns
+## 12. Problemas comuns
 
 | Sintoma | O que verificar |
 |--------|------------------|
@@ -210,7 +238,7 @@ Se você copiar apenas o `.db` para outra máquina, use o **mesmo esquema** gera
 
 ---
 
-## 12. Referências úteis
+## 13. Referências úteis
 
 - Documentação do dataset Olist (Kaggle): busque *Brazilian E‑Commerce* para o dicionário de negócio das colunas.
 - [Power BI — Obter dados](https://learn.microsoft.com/pt-br/power-bi/connect-data/desktop-get-data): conectores oficiais.
